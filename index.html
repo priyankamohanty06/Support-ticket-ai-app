@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Support Ticket AutoPilot</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">AI-powered triage demo</p>
+          <h1>Support Ticket AutoPilot</h1>
+          <p class="hero-copy">
+            Paste a customer ticket and receive a fast classification, priority, and a suggested response.
+          </p>
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="panel form-panel">
+          <h2>Submit a support ticket</h2>
+          <form id="ticket-form">
+            <label>
+              Ticket title
+              <input id="title" name="title" type="text" required placeholder="e.g. Billing charge appears twice" />
+            </label>
+
+            <label>
+              Description
+              <textarea id="description" name="description" rows="8" required placeholder="Describe the issue in detail"></textarea>
+            </label>
+
+            <label>
+              Category hint
+              <select id="categoryHint" name="categoryHint">
+                <option value="">Auto-detect</option>
+                <option value="billing">Billing</option>
+                <option value="technical">Technical</option>
+                <option value="account">Account</option>
+                <option value="product">Product</option>
+                <option value="security">Security</option>
+              </select>
+            </label>
+
+            <label>
+              Attachments
+              <input id="attachments" name="attachments" type="file" multiple accept=".pdf,.jpg,.jpeg,.png,.xlsx,.docx" />
+            </label>
+
+            <div class="file-help">Supported files: PDF, JPG, PNG, XLSX, DOCX up to 5MB each.</div>
+
+            <button type="submit" id="submitBtn">Analyze ticket</button>
+          </form>
+        </section>
+
+        <section class="panel results-panel">
+          <div id="confirmation" class="confirmation hidden"></div>
+          <div id="analysis-card" class="analysis-card hidden">
+            <div class="card-head">
+              <div>
+                <p class="eyebrow">Classification result</p>
+                <h3 id="resultTitle">Ticket analysis</h3>
+              </div>
+              <span id="priorityBadge" class="priority-badge">P4</span>
+            </div>
+
+            <div class="result-grid">
+              <div>
+                <h4>Ticket ID</h4>
+                <p id="ticketId">-</p>
+              </div>
+              <div>
+                <h4>Category</h4>
+                <p id="categoryValue">-</p>
+              </div>
+              <div>
+                <h4>SLA deadline</h4>
+                <p id="slaValue">-</p>
+              </div>
+            </div>
+
+            <div class="result-section">
+              <h4>Masked ticket preview</h4>
+              <p id="maskedPreview" class="preview-box"></p>
+            </div>
+
+            <div class="result-section">
+              <h4>Confidence metrics</h4>
+              <div class="metric-list">
+                <div><span>Category confidence</span><strong id="categoryConfidence">-</strong></div>
+                <div><span>Priority score</span><strong id="priorityScore">-</strong></div>
+                <div><span>Response confidence</span><strong id="responseConfidence">-</strong></div>
+              </div>
+            </div>
+
+            <div class="result-section">
+              <h4>Alternative categories</h4>
+              <div id="alternatives" class="chip-row"></div>
+            </div>
+
+            <div class="result-section">
+              <h4>Suggested response</h4>
+              <textarea id="responseEditor" rows="5"></textarea>
+            </div>
+
+            <div class="result-section">
+              <h4>Decision factors</h4>
+              <ul id="factorsList" class="factor-list"></ul>
+            </div>
+
+            <div class="result-section">
+              <h4>Agent actions</h4>
+              <div class="action-row">
+                <button class="action-btn" data-action="accept">Accept</button>
+                <button class="action-btn" data-action="modify">Modify</button>
+                <button class="action-btn" data-action="override">Override</button>
+                <button class="action-btn" data-action="escalate">Escalate</button>
+              </div>
+              <div id="actionStatus" class="action-status">Choose an action to simulate agent workflow.</div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
