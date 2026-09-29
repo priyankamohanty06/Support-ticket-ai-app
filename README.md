@@ -26,7 +26,7 @@ The solution helps organizations reduce manual effort, improve ticket handling c
 Enter ticket title and detailed description.
 Upload supporting documents and evidence.
 Accepts PDF, JPG, PNG, XLSX, and DOCX attachments.
-Supports multiple file uploads. 【1-a06678】
+Supports multiple file uploads. 
 ✅ AI-Powered Classification
 Automatically detects ticket categories.
 Supports categories such as:
