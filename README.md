@@ -98,13 +98,16 @@ Customer Ticket
 Input Validation
        │
        ▼
+       
 AI Classification Engine
        │
  ┌─────┼─────────┐
  ▼     ▼         ▼
+ 
 Category Priority Severity
        │
        ▼
+       
 SLA Assignment
        │
        ▼
